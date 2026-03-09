@@ -368,7 +368,8 @@ background:linear-gradient(transparent,#0b0b0b);
 }
 
 .banner-content{
-max-width:500px;
+max-width:600px;
+margin-bottom:40px;
 z-index:2;
 }
 
@@ -390,6 +391,7 @@ color:black;
 font-weight:bold;
 cursor:pointer;
 }
+
 
 
 
