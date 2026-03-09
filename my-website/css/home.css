@@ -291,3 +291,48 @@
   width:auto;
   border-radius:6px;
 }
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#111;
+  padding:10px 30px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.logo{
+  height:45px;
+  border-radius:50%;
+  transition:0.3s;
+}
+
+.logo:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 15px #00ffff;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:#00ffff;
+}
+
+.search-bar{
+  padding:6px 10px;
+  border-radius:20px;
+  border:none;
+}
