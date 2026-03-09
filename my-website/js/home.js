@@ -26,11 +26,16 @@ const API_KEY = 'bb6302aa8a6d38895b024e4649cc2c07';
 }
 
 
-    function displayBanner(item) {
-      document.getElementById('banner').style.backgroundImage = `url(${IMG_URL}${item.backdrop_path})`;
-      document.getElementById('banner-title').textContent = item.title || item.name;
-    }
+function displayBanner(item) {
+  const banner = document.getElementById('banner');
 
+  banner.style.backgroundImage = `url(${IMG_URL}${item.backdrop_path})`;
+
+  document.getElementById('banner-title').textContent = item.title || item.name;
+
+  document.getElementById('banner-description').textContent =
+    item.overview ? item.overview.substring(0,120) + "..." : "";
+}
     function displayList(items, containerId) {
       const container = document.getElementById(containerId);
       container.innerHTML = '';
@@ -122,3 +127,4 @@ const API_KEY = 'bb6302aa8a6d38895b024e4649cc2c07';
 
 
     init();
+
