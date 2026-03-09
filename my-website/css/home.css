@@ -336,3 +336,13 @@
   border-radius:20px;
   border:none;
 }
+
+.list img{
+  transition:0.3s;
+  border-radius:8px;
+}
+
+.list img:hover{
+  transform:scale(1.15);
+  z-index:10;
+}
