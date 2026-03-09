@@ -345,11 +345,13 @@ scroll-behavior:smooth;
 }
 
 .banner{
-height:500px;
+height:70vh;
+min-height:500px;
 background-size:cover;
-background-position:center;
+background-position:center center;
+background-repeat:no-repeat;
 display:flex;
-align-items:center;
+align-items:flex-end;
 padding:60px;
 color:white;
 position:relative;
@@ -388,6 +390,7 @@ color:black;
 font-weight:bold;
 cursor:pointer;
 }
+
 
 
 
