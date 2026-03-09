@@ -283,4 +283,11 @@
     flex-direction: row;
     gap: 8px;
   }
+
+}
+
+.logo{
+  height:45px;
+  width:auto;
+  border-radius:6px;
 }
