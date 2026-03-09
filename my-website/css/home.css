@@ -14,12 +14,6 @@
       padding: 5px; border-radius: 5px; border: none;
     }
 
-
-    .banner h1 {
-      background: rgba(0,0,0,0.7);
-      padding: 10px;
-    }
-
     .row {
       margin: 20px;
     }
@@ -394,5 +388,6 @@ color:black;
 font-weight:bold;
 cursor:pointer;
 }
+
 
 
