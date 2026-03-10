@@ -128,6 +128,19 @@ function watchNow() {
       const tvShows = await fetchTrending('tv');
       const anime = await fetchTrendingAnime();
 
+    async function fetchTrailer(type,id){
+
+    const res = await fetch(`${BASE_URL}/${type}/${id}/videos?api_key=${API_KEY}`);
+    const data = await res.json();
+
+    const trailer = data.results.find(
+    v => v.type === "Trailer" && v.site === "YouTube"
+    );
+
+    return trailer ? trailer.key : null;
+
+    }
+
       displayBanner(movies[Math.floor(Math.random() * movies.length)]);
       displayList(movies, 'movies-list');
       displayList(tvShows, 'tvshows-list');
@@ -136,5 +149,6 @@ function watchNow() {
 
 
     init();
+
 
 
