@@ -417,6 +417,10 @@ height:100%;
 background:rgba(0,0,0,0.35);
 }
 
+.banner-video iframe{
+z-index:1;
+}
+
 
 
 
