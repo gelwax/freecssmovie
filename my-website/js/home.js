@@ -49,7 +49,7 @@ const bannerTrailer = document.getElementById("banner-trailer");
 if(trailer){
   bannerTrailer.src = `https://www.youtube.com/embed/${trailer}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailer}`;
 }else{
-  bannerTrailer.style.display = "none";
+  bannerTrailer.src = "";
 }
 
 }
@@ -107,10 +107,11 @@ function unmuteTrailer(){
     }
 
     function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-      document.getElementById('modal-video').src = '';
-    }
+  document.getElementById('modal').style.display = 'none';
+  document.getElementById('modal-video').src = '';
 
+  init(); // restart banner trailer
+}
 function openSearchModal() {
 
   stopBannerTrailer();
@@ -184,13 +185,13 @@ document.addEventListener("click", function(e){
 
   const banner = document.getElementById("banner");
 
-  if(!banner.contains(e.target)){
+  if(banner && !banner.contains(e.target)){
     stopBannerTrailer();
   }
 
 });
-
     init();
+
 
 
 
