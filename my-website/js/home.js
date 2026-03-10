@@ -155,6 +155,12 @@ displayList(tvShows, 'tvshows-list');
 displayList(anime, 'anime-list');
 
 }
+function stopBannerTrailer(){
+  const iframe = document.getElementById("banner-trailer");
+  if(iframe){
+    iframe.src = "";
+  }
+}
 
     async function fetchTrailer(type,id){
 
@@ -171,6 +177,7 @@ return trailer ? trailer.key : null;
 
 
     init();
+
 
 
 
