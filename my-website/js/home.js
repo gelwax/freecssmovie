@@ -2,6 +2,7 @@ const API_KEY = 'bb6302aa8a6d38895b024e4649cc2c07';
     const BASE_URL = 'https://api.themoviedb.org/3';
     const IMG_URL = 'https://image.tmdb.org/t/p/original';
     let currentItem;
+    let bannerItem;
 
     async function fetchTrending(type) {
       const res = await fetch(`${BASE_URL}/trending/${type}/week?api_key=${API_KEY}`);
@@ -27,6 +28,8 @@ const API_KEY = 'bb6302aa8a6d38895b024e4649cc2c07';
 
 
 function displayBanner(item) {
+  bannerItem = item; // store banner movie
+
   const banner = document.getElementById('banner');
 
   banner.style.backgroundImage = `url(${IMG_URL}${item.backdrop_path})`;
@@ -35,6 +38,12 @@ function displayBanner(item) {
 
   document.getElementById('banner-description').textContent =
     item.overview ? item.overview.substring(0,120) + "..." : "";
+}
+
+function watchNow() {
+  if (bannerItem) {
+    showDetails(bannerItem);
+  }
 }
     function displayList(items, containerId) {
       const container = document.getElementById(containerId);
@@ -127,4 +136,5 @@ function displayBanner(item) {
 
 
     init();
+
 
