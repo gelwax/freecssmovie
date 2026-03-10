@@ -44,11 +44,12 @@ const type = item.title ? "movie" : "tv";
 
 const trailer = await fetchTrailer(type,item.id);
 
+const bannerTrailer = document.getElementById("banner-trailer");
+
 if(trailer){
-
-document.getElementById("banner-trailer").src =
-`https://www.youtube.com/embed/${trailer}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailer}`;
-
+  bannerTrailer.src = `https://www.youtube.com/embed/${trailer}?autoplay=1&mute=1`;
+}else{
+  bannerTrailer.style.display = "none";
 }
 
 }
@@ -164,6 +165,7 @@ return trailer ? trailer.key : null;
 
 
     init();
+
 
 
 
