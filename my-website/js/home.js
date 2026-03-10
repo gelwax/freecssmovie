@@ -60,11 +60,7 @@ function watchNow() {
   }
 }
 
-function unmuteTrailer(){
-  const iframe = document.getElementById("banner-trailer");
-  iframe.src = iframe.src.replace("mute=1","mute=0");
-}
-}
+
 
 function unmuteTrailer(){
   const iframe = document.getElementById("banner-trailer");
@@ -177,6 +173,7 @@ return trailer ? trailer.key : null;
 
 
     init();
+
 
 
 
