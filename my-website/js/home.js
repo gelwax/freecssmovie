@@ -161,14 +161,10 @@ v => v.type === "Trailer" && v.site === "YouTube"
 return trailer ? trailer.key : null;
 
 }
-      displayBanner(movies[Math.floor(Math.random() * movies.length)]);
-      displayList(movies, 'movies-list');
-      displayList(tvShows, 'tvshows-list');
-      displayList(anime, 'anime-list');
-    }
 
 
     init();
+
 
 
 
