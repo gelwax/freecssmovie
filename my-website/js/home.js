@@ -40,7 +40,7 @@ document.getElementById('banner-title').textContent = item.title || item.name;
 document.getElementById('banner-description').textContent =
 item.overview ? item.overview.substring(0,120) + "..." : "";
 
-const type = item.media_type === "movie" ? "movie" : "tv";
+const type = item.title ? "movie" : "tv";
 
 const trailer = await fetchTrailer(type,item.id);
 
@@ -140,6 +140,8 @@ function watchNow() {
       const movies = await fetchTrending('movie');
       const tvShows = await fetchTrending('tv');
       const anime = await fetchTrendingAnime();
+        
+    }
 
     async function fetchTrailer(type,id){
 
@@ -162,6 +164,7 @@ function watchNow() {
 
 
     init();
+
 
 
 
