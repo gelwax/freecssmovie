@@ -59,6 +59,12 @@ function watchNow() {
     showDetails(bannerItem);
   }
 }
+
+function unmuteTrailer(){
+  const iframe = document.getElementById("banner-trailer");
+  iframe.src = iframe.src.replace("mute=1","mute=0");
+}
+}
     function displayList(items, containerId) {
       const container = document.getElementById(containerId);
       container.innerHTML = '';
@@ -165,6 +171,7 @@ return trailer ? trailer.key : null;
 
 
     init();
+
 
 
 
