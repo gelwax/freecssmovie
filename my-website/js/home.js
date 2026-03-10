@@ -137,11 +137,17 @@ function watchNow() {
     }
 
     async function init() {
-      const movies = await fetchTrending('movie');
-      const tvShows = await fetchTrending('tv');
-      const anime = await fetchTrendingAnime();
-        
-    
+
+const movies = await fetchTrending('movie');
+const tvShows = await fetchTrending('tv');
+const anime = await fetchTrendingAnime();
+
+displayBanner(movies[Math.floor(Math.random() * movies.length)]);
+displayList(movies, 'movies-list');
+displayList(tvShows, 'tvshows-list');
+displayList(anime, 'anime-list');
+
+}
 
     async function fetchTrailer(type,id){
 
@@ -164,6 +170,7 @@ function watchNow() {
 
 
     init();
+
 
 
 
