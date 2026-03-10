@@ -141,7 +141,7 @@ function watchNow() {
       const tvShows = await fetchTrending('tv');
       const anime = await fetchTrendingAnime();
         
-    }
+    
 
     async function fetchTrailer(type,id){
 
@@ -164,6 +164,7 @@ function watchNow() {
 
 
     init();
+
 
 
 
