@@ -27,17 +27,30 @@ const API_KEY = 'bb6302aa8a6d38895b024e4649cc2c07';
 }
 
 
-function displayBanner(item) {
-  bannerItem = item; // store banner movie
+async function displayBanner(item){
 
-  const banner = document.getElementById('banner');
+bannerItem = item;
 
-  banner.style.backgroundImage = `url(${IMG_URL}${item.backdrop_path})`;
+const banner = document.getElementById('banner');
 
-  document.getElementById('banner-title').textContent = item.title || item.name;
+banner.style.backgroundImage = `url(${IMG_URL}${item.backdrop_path})`;
 
-  document.getElementById('banner-description').textContent =
-    item.overview ? item.overview.substring(0,120) + "..." : "";
+document.getElementById('banner-title').textContent = item.title || item.name;
+
+document.getElementById('banner-description').textContent =
+item.overview ? item.overview.substring(0,120) + "..." : "";
+
+const type = item.media_type === "movie" ? "movie" : "tv";
+
+const trailer = await fetchTrailer(type,item.id);
+
+if(trailer){
+
+document.getElementById("banner-trailer").src =
+`https://www.youtube.com/embed/${trailer}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailer}`;
+
+}
+
 }
 
 function watchNow() {
@@ -149,6 +162,7 @@ function watchNow() {
 
 
     init();
+
 
 
 
