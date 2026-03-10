@@ -47,7 +47,7 @@ const trailer = await fetchTrailer(type,item.id);
 const bannerTrailer = document.getElementById("banner-trailer");
 
 if(trailer){
-  bannerTrailer.src = `https://www.youtube.com/embed/${trailer}?autoplay=1&mute=1`;
+  bannerTrailer.src = `https://www.youtube.com/embed/${trailer}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailer}`;
 }else{
   bannerTrailer.style.display = "none";
 }
@@ -89,7 +89,7 @@ function unmuteTrailer(){
 
     function changeServer() {
       const server = document.getElementById('server').value;
-      const type = currentItem.media_type === "movie" ? "movie" : "tv";
+      const type = currentItem.title ? "movie" : "tv";
       let embedURL = "";
 
       if (server === "vidsrc.cc") {
@@ -171,6 +171,7 @@ return trailer ? trailer.key : null;
 
 
     init();
+
 
 
 
