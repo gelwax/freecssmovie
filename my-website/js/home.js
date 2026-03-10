@@ -78,7 +78,10 @@ function unmuteTrailer(){
     }
 
     function showDetails(item) {
-      currentItem = item;
+
+  stopBannerTrailer(); // stop banner trailer
+
+  currentItem = item;
       document.getElementById('modal-title').textContent = item.title || item.name;
       document.getElementById('modal-description').textContent = item.overview;
       document.getElementById('modal-image').src = `${IMG_URL}${item.poster_path}`;
@@ -108,11 +111,13 @@ function unmuteTrailer(){
       document.getElementById('modal-video').src = '';
     }
 
-    function openSearchModal() {
-      document.getElementById('search-modal').style.display = 'flex';
-      document.getElementById('search-input').focus();
-    }
+function openSearchModal() {
 
+  stopBannerTrailer();
+
+  document.getElementById('search-modal').style.display = 'flex';
+  document.getElementById('search-input').focus();
+}
     function closeSearchModal() {
       document.getElementById('search-modal').style.display = 'none';
       document.getElementById('search-results').innerHTML = '';
@@ -175,8 +180,18 @@ return trailer ? trailer.key : null;
 
 }
 
+document.addEventListener("click", function(e){
+
+  const banner = document.getElementById("banner");
+
+  if(!banner.contains(e.target)){
+    stopBannerTrailer();
+  }
+
+});
 
     init();
+
 
 
 
