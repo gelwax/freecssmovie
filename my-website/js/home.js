@@ -190,7 +190,15 @@ document.addEventListener("click", function(e){
   }
 
 });
+
+document.getElementById("search-modal").addEventListener("click", function(e){
+  if(e.target.id === "search-modal"){
+    closeSearchModal();
+  }
+});
+
     init();
+
 
 
 
