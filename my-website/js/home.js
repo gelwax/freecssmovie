@@ -13,7 +13,6 @@ const API_KEY = 'bb6302aa8a6d38895b024e4649cc2c07';
     async function fetchTrendingAnime() {
   let allResults = [];
 
-  // Fetch from multiple pages to get more anime (max 3 pages for demo)
   for (let page = 1; page <= 3; page++) {
     const res = await fetch(`${BASE_URL}/trending/tv/week?api_key=${API_KEY}&page=${page}`);
     const data = await res.json();
@@ -24,6 +23,17 @@ const API_KEY = 'bb6302aa8a6d38895b024e4649cc2c07';
   }
 
   return allResults;
+}
+
+/* ADD IT HERE */
+async function fetchPopular(){
+
+  const res = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+
+  const data = await res.json();
+
+  return data.results;
+
 }
 
 
@@ -180,11 +190,13 @@ function openSearchModal() {
 const movies = await fetchTrending('movie');
 const tvShows = await fetchTrending('tv');
 const anime = await fetchTrendingAnime();
+const popular = await fetchPopular();
 
 displayBanner(movies[Math.floor(Math.random() * movies.length)]);
 displayList(movies, 'movies-list');
 displayList(tvShows, 'tvshows-list');
 displayList(anime, 'anime-list');
+displayList(popular, 'popular-list');
 
 /* AUTO ROTATING BANNER */
 setInterval(()=>{
@@ -229,6 +241,7 @@ document.getElementById("search-modal").addEventListener("click", function(e){
 });
 
     init();
+
 
 
 
