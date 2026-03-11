@@ -500,5 +500,35 @@ z-index:1;
   transition:0.3s;
 }
 
+.scroll-wrapper{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+
+.scroll-btn{
+  position:absolute;
+  z-index:10;
+  background:rgba(0,0,0,0.6);
+  border:none;
+  color:white;
+  font-size:18px;
+  width:40px;
+  height:40px;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+.scroll-btn.left{
+  left:-10px;
+}
+
+.scroll-btn.right{
+  right:-10px;
+}
+
+.scroll-btn:hover{
+  background:#333;
+}
 
 
