@@ -118,11 +118,14 @@ function openSearchModal() {
 
   document.getElementById('search-modal').style.display = 'flex';
   document.getElementById('search-input').focus();
+    document.body.style.overflow = "hidden";
 }
     function closeSearchModal() {
-      document.getElementById('search-modal').style.display = 'none';
-      document.getElementById('search-results').innerHTML = '';
-    }
+  document.getElementById('search-modal').style.display = 'none';
+  document.getElementById('search-results').innerHTML = '';
+  document.getElementById('search-input').value = '';
+    document.body.style.overflow = "auto";
+}
 
     async function searchTMDB() {
       const query = document.getElementById('search-input').value;
@@ -198,6 +201,7 @@ document.getElementById("search-modal").addEventListener("click", function(e){
 });
 
     init();
+
 
 
 
