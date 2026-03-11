@@ -22,10 +22,16 @@
       margin-bottom: 10px;
     }
 
-    .list {
-      display: flex;
-      overflow-x: auto;
-    }
+    .list{
+  display:flex;
+  overflow-x:auto;
+  gap:12px;
+  padding-bottom:10px;
+}
+
+.list::-webkit-scrollbar{
+  display:none;
+}
 
     .list img {
       width: 150px;
@@ -481,6 +487,7 @@ z-index:1;
   color:gold;
   font-size:12px;
 }
+
 
 
 
