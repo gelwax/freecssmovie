@@ -240,7 +240,21 @@ document.getElementById("search-modal").addEventListener("click", function(e){
   }
 });
 
-    init();
+
+function scrollRow(id, direction){
+
+  const container = document.getElementById(id);
+
+  const scrollAmount = 500;
+
+  container.scrollBy({
+    left: scrollAmount * direction,
+    behavior: "smooth"
+  });
+
+}
+
+init();
 
 
 
