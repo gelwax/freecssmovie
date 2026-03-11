@@ -66,16 +66,39 @@ function unmuteTrailer(){
 }
 
     function displayList(items, containerId) {
-      const container = document.getElementById(containerId);
-      container.innerHTML = '';
-      items.forEach(item => {
-        const img = document.createElement('img');
-        img.src = `${IMG_URL}${item.poster_path}`;
-        img.alt = item.title || item.name;
-        img.onclick = () => showDetails(item);
-        container.appendChild(img);
-      });
-    }
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+
+  items.forEach(item => {
+
+    const card = document.createElement("div");
+    card.className = "movie-card";
+
+    const img = document.createElement("img");
+    img.src = `${IMG_URL}${item.poster_path}`;
+    img.alt = item.title || item.name;
+
+    const info = document.createElement("div");
+    info.className = "movie-info";
+
+    const title = document.createElement("h4");
+    title.textContent = item.title || item.name;
+
+    const rating = document.createElement("span");
+    rating.textContent = "⭐ " + item.vote_average.toFixed(1);
+
+    info.appendChild(title);
+    info.appendChild(rating);
+
+    card.appendChild(img);
+    card.appendChild(info);
+
+    card.onclick = () => showDetails(item);
+
+    container.appendChild(card);
+
+  });
+}
 
     function showDetails(item) {
 
@@ -201,6 +224,7 @@ document.getElementById("search-modal").addEventListener("click", function(e){
 });
 
     init();
+
 
 
 
