@@ -463,6 +463,8 @@ z-index:1;
 
 .movie-card img{
   width:100%;
+  height:240px;
+  object-fit:cover;
   border-radius:8px;
 }
 
@@ -478,9 +480,8 @@ z-index:1;
 
 .movie-info h4{
   font-size:14px;
-  white-space:nowrap;
+  height:36px;
   overflow:hidden;
-  text-overflow:ellipsis;
 }
 
 .movie-info span{
@@ -492,6 +493,7 @@ z-index:1;
 .navbar{
   background:linear-gradient(to bottom,#000,#111);
 }
+
 
 
 
