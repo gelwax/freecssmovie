@@ -186,6 +186,11 @@ displayList(movies, 'movies-list');
 displayList(tvShows, 'tvshows-list');
 displayList(anime, 'anime-list');
 
+/* AUTO ROTATING BANNER */
+setInterval(()=>{
+  displayBanner(movies[Math.floor(Math.random()*movies.length)]);
+},8000);
+
 }
 function stopBannerTrailer(){
   const iframe = document.getElementById("banner-trailer");
@@ -224,6 +229,7 @@ document.getElementById("search-modal").addEventListener("click", function(e){
 });
 
     init();
+
 
 
 
