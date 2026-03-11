@@ -49,22 +49,58 @@
 
   <div class="row">
     <h2>Trending Movies</h2>
+  <div class="scroll-wrapper">
+
+    <button class="scroll-btn left" onclick="scrollRow('movies-list', -1)">❮</button>
+
     <div class="list" id="movies-list"></div>
+
+    <button class="scroll-btn right" onclick="scrollRow('movies-list', 1)">❯</button>
+
   </div>
 
+</div>
+  
   <div class="row">
     <h2>Trending TV Shows</h2>
+  <div class="scroll-wrapper">
+
+    <button class="scroll-btn left" onclick="scrollRow('tvshows-list', -1)">❮</button>
+
     <div class="list" id="tvshows-list"></div>
+
+    <button class="scroll-btn right" onclick="scrollRow('tvshows-list', 1)">❯</button>
+
   </div>
 
+</div>
+  
   <div class="row">
   <h2>Trending Anime</h2>
-  <div class="list" id="anime-list"></div>
-</div>
+  <div class="scroll-wrapper">
 
+    <button class="scroll-btn left" onclick="scrollRow('anime-list', -1)">❮</button>
+
+    <div class="list" id="anime-list"></div>
+
+    <button class="scroll-btn right" onclick="scrollRow('anime-list', 1)">❯</button>
+
+  </div>
+
+</div>
+  
 <div class="row">
   <h2>Popular Movies</h2>
-  <div class="list" id="popular-list"></div>
+  <div class="scroll-wrapper">
+
+    <button class="scroll-btn left" onclick="scrollRow('popular-list', -1)">❮</button>
+
+    <div class="list" id="popular-list"></div>
+
+    <button class="scroll-btn right" onclick="scrollRow('popular-list', 1)">❯</button>
+
+  </div>
+
 </div>
   
   <div class="modal" id="modal">
@@ -111,6 +147,7 @@
   
 
 </body>
+
 
 
 
