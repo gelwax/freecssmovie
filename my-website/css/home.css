@@ -133,11 +133,14 @@
       cursor: pointer;
     }
 
-    .search-modal .close {
-      position: absolute;
+    .search-modal .close{
+      position: fixed;
       top: 20px;
-      right: 30px;
-      font-size: 30px;
+      right: 25px;
+      font-size: 32px;
+      color: red;
+      cursor: pointer;
+      z-index: 20;
     }
 
 /* MOBILE DISPLAY START */
@@ -420,6 +423,7 @@ background:rgba(0,0,0,0.35);
 .banner-video iframe{
 z-index:1;
 }
+
 
 
 
