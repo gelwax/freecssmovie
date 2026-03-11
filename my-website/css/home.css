@@ -494,6 +494,11 @@ z-index:1;
   background:linear-gradient(to bottom,#000,#111);
 }
 
+.movie-card{
+  width:160px;
+  flex-shrink:0;
+  transition:0.3s;
+}
 
 
 
