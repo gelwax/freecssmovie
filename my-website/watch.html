@@ -5,18 +5,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Watch</title>
+<title>Watch Movie</title>
 
 <link rel="stylesheet" href="css/home.css">
 
 <style>
-.player{
-width:100%;
-height:80vh;
-background:black;
+
+.watch-container{
 display:flex;
-justify-content:center;
-align-items:center;
+gap:20px;
+padding:20px;
+flex-wrap:wrap;
+}
+
+.player{
+flex:2;
+min-width:300px;
+height:70vh;
+background:black;
 }
 
 .player iframe{
@@ -24,6 +30,33 @@ width:100%;
 height:100%;
 border:none;
 }
+
+.movie-info{
+flex:1;
+min-width:250px;
+}
+
+.movie-info img{
+width:100%;
+border-radius:8px;
+margin-bottom:10px;
+}
+
+.server-buttons button{
+margin:5px;
+padding:8px 12px;
+border:none;
+background:#222;
+color:white;
+cursor:pointer;
+border-radius:6px;
+}
+
+.server-buttons button:hover{
+background:#00ffff;
+color:black;
+}
+
 </style>
 
 </head>
@@ -33,6 +66,11 @@ border:none;
 <div class="navbar">
 <a href="index.html">⬅ Back</a>
 </div>
+
+
+<div class="watch-container">
+
+<!-- VIDEO PLAYER -->
 
 <div class="player">
 
@@ -45,19 +83,80 @@ loading="lazy">
 
 </div>
 
+
+<!-- MOVIE INFO -->
+
+<div class="movie-info">
+
+<img id="movie-poster">
+
+<h2 id="movie-title"></h2>
+
+<p id="movie-description"></p>
+
+<div class="server-buttons">
+
+<button onclick="changeServer('vidsrc.to')">Server 1</button>
+
+<button onclick="changeServer('2embed.cc')">Server 2</button>
+
+<button onclick="changeServer('multiembed.mov')">Server 3</button>
+
+</div>
+
+</div>
+
+</div>
+
+
 <script>
 
+const API_KEY = "bb6302aa8a6d38895b024e4649cc2c07";
+const IMG_URL = "https://image.tmdb.org/t/p/w500";
+
 const params = new URLSearchParams(window.location.search);
+
 const id = params.get("id");
 const type = params.get("type");
 
-const server = "vidsrc.to"; // cleaner server
+let currentServer = "vidsrc.to";
+
+function loadPlayer(){
 
 document.getElementById("video-player").src =
-`https://${server}/embed/${type}/${id}`;
+`https://${currentServer}/embed/${type}/${id}`;
+
+}
+
+function changeServer(server){
+
+currentServer = server;
+
+loadPlayer();
+
+}
+
+
+async function loadMovieInfo(){
+
+const res = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${API_KEY}`);
+
+const data = await res.json();
+
+document.getElementById("movie-title").textContent = data.title || data.name;
+
+document.getElementById("movie-description").textContent = data.overview;
+
+document.getElementById("movie-poster").src =
+`${IMG_URL}${data.poster_path}`;
+
+}
+
+loadPlayer();
+
+loadMovieInfo();
 
 </script>
 
 </body>
-
 </html>
