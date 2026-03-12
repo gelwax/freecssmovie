@@ -145,8 +145,10 @@ loading="lazy">
 
 <div class="server-buttons">
 
-<button onclick="changeServer('vidsrc.to')">Server 1</button>
+<button onclick="changeServer('vidsrc.cc')">Server 1</button>
+
 <button onclick="changeServer('2embed.cc')">Server 2</button>
+
 <button onclick="changeServer('multiembed.mov')">Server 3</button>
 
 </div>
@@ -175,7 +177,7 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 const type = params.get("type");
 
-let currentServer = "vidsrc.to";
+let currentServer = "vidsrc.cc";
 
 
 function loadPlayer(){
@@ -255,6 +257,7 @@ loadRecommendations();
 
 </body>
 </html>
+
 
 
 
