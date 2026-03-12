@@ -31,6 +31,12 @@ height:100%;
 border:none;
 }
 
+.player{
+box-shadow:0 0 40px rgba(0,0,0,0.8);
+border-radius:8px;
+overflow:hidden;
+}
+
 .movie-info{
 flex:1;
 min-width:250px;
@@ -83,11 +89,25 @@ border-radius:6px;
 }
 
 </style>
-
+  
+.watch-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+filter:blur(20px) brightness(0.3);
+z-index:-1;
+}
+  
 </head>
 
 <body>
-
+  
+<div class="watch-bg" id="watch-bg"></div>
+  
 <div class="navbar">
 <a href="index.html">⬅ Back</a>
 </div>
@@ -177,6 +197,9 @@ document.getElementById("movie-description").textContent = data.overview;
 document.getElementById("movie-poster").src =
 `${IMG_URL}${data.poster_path}`;
 
+  document.getElementById("watch-bg").style.backgroundImage =
+`url(https://image.tmdb.org/t/p/original${data.backdrop_path})`;
+
 }
 
 
@@ -222,4 +245,5 @@ loadRecommendations();
 
 </body>
 </html>
+
 
