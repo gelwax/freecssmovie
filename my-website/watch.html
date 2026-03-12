@@ -145,8 +145,6 @@ loading="lazy">
 
 <div class="server-buttons">
 
-<div class="server-buttons">
-
 <button onclick="changeServer('vidsrc.cc')">Vidsrc</button>
 
 <button onclick="changeServer('2embed.cc')">2Embed</button>
@@ -182,11 +180,23 @@ let currentServer = "vidsrc.cc";
 
 function loadPlayer(){
 
-document.getElementById("video-player").src =
-`https://${currentServer}/embed/${type}/${id}`;
+let url="";
 
+if(currentServer === "vidsrc.cc"){
+url = `https://vidsrc.cc/v2/embed/${type}/${id}`;
 }
 
+else if(currentServer === "2embed.cc"){
+url = `https://www.2embed.cc/embed/${id}`;
+}
+
+else if(currentServer === "multiembed.mov"){
+url = `https://multiembed.mov/?video_id=${id}&tmdb=1`;
+}
+
+document.getElementById("video-player").src = url;
+
+}
 
 function changeServer(server){
 
@@ -257,6 +267,7 @@ loadRecommendations();
 
 </body>
 </html>
+
 
 
 
