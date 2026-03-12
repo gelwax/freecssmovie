@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Watch Movie</title>
+<title>Watch</title>
 
 <link rel="stylesheet" href="css/home.css">
 
@@ -57,6 +57,30 @@ background:#00ffff;
 color:black;
 }
 
+.recommendations{
+padding:20px;
+}
+
+.recommendations h2{
+margin-bottom:10px;
+}
+
+.recommend-list{
+display:flex;
+overflow-x:auto;
+gap:12px;
+}
+
+.recommend-card{
+width:140px;
+cursor:pointer;
+}
+
+.recommend-card img{
+width:100%;
+border-radius:6px;
+}
+
 </style>
 
 </head>
@@ -70,21 +94,15 @@ color:black;
 
 <div class="watch-container">
 
-<!-- VIDEO PLAYER -->
-
 <div class="player">
-
 <iframe
 id="video-player"
 allowfullscreen
 allow="autoplay; encrypted-media"
 loading="lazy">
 </iframe>
-
 </div>
 
-
-<!-- MOVIE INFO -->
 
 <div class="movie-info">
 
@@ -97,14 +115,21 @@ loading="lazy">
 <div class="server-buttons">
 
 <button onclick="changeServer('vidsrc.to')">Server 1</button>
-
 <button onclick="changeServer('2embed.cc')">Server 2</button>
-
 <button onclick="changeServer('multiembed.mov')">Server 3</button>
 
 </div>
 
 </div>
+
+</div>
+
+
+<div class="recommendations">
+
+<h2>Recommended</h2>
+
+<div class="recommend-list" id="recommend-list"></div>
 
 </div>
 
@@ -121,6 +146,7 @@ const type = params.get("type");
 
 let currentServer = "vidsrc.to";
 
+
 function loadPlayer(){
 
 document.getElementById("video-player").src =
@@ -128,10 +154,10 @@ document.getElementById("video-player").src =
 
 }
 
+
 function changeServer(server){
 
 currentServer = server;
-
 loadPlayer();
 
 }
@@ -152,9 +178,44 @@ document.getElementById("movie-poster").src =
 
 }
 
-loadPlayer();
 
+async function loadRecommendations(){
+
+const res = await fetch(`https://api.themoviedb.org/3/${type}/${id}/recommendations?api_key=${API_KEY}`);
+
+const data = await res.json();
+
+const container = document.getElementById("recommend-list");
+
+container.innerHTML="";
+
+data.results.slice(0,12).forEach(movie=>{
+
+if(!movie.poster_path) return;
+
+const card=document.createElement("div");
+card.className="recommend-card";
+
+const img=document.createElement("img");
+
+img.src=`${IMG_URL}${movie.poster_path}`;
+
+card.appendChild(img);
+
+card.onclick=()=>{
+window.location.href=`watch.html?id=${movie.id}&type=${type}`;
+};
+
+container.appendChild(card);
+
+});
+
+}
+
+
+loadPlayer();
 loadMovieInfo();
+loadRecommendations();
 
 </script>
 
