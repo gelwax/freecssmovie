@@ -129,24 +129,13 @@ function unmuteTrailer(){
 function changeServer(){
 
 const server = document.getElementById("server").value;
-
 const type = currentItem.title ? "movie" : "tv";
 
-document.getElementById("modal-video").src =
-`https://${server}/embed/${type}/${currentItem.id}`;
+const url = `https://${server}/embed/${type}/${currentItem.id}`;
+
+document.getElementById("modal-video").src = url;
 
 }
-
-      if (server === "vidsrc.cc") {
-        embedURL = `https://vidsrc.cc/v2/embed/${type}/${currentItem.id}`;
-      } else if (server === "vidsrc.me") {
-        embedURL = `https://vidsrc.net/embed/${type}/?tmdb=${currentItem.id}`;
-      } else if (server === "player.videasy.net") {
-        embedURL = `https://player.videasy.net/${type}/${currentItem.id}`;
-      }
-
-      document.getElementById('modal-video').src = embedURL;
-    }
 
     function closeModal() {
   document.getElementById('modal').style.display = 'none';
@@ -264,6 +253,7 @@ function scrollRow(id, direction){
 }
 
 init();
+
 
 
 
