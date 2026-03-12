@@ -103,7 +103,10 @@ function unmuteTrailer(){
     card.appendChild(img);
     card.appendChild(info);
 
-    card.onclick = () => showDetails(item);
+    card.onclick = () => {
+  const type = item.title ? "movie" : "tv";
+  window.location.href = `watch.html?id=${item.id}&type=${type}`;
+};
 
     container.appendChild(card);
 
@@ -123,10 +126,16 @@ function unmuteTrailer(){
       document.getElementById('modal').style.display = 'flex';
     }
 
-    function changeServer() {
-      const server = document.getElementById('server').value;
-      const type = currentItem.title ? "movie" : "tv";
-      let embedURL = "";
+function changeServer(){
+
+const server = document.getElementById("server").value;
+
+const type = currentItem.title ? "movie" : "tv";
+
+document.getElementById("modal-video").src =
+`https://${server}/embed/${type}/${currentItem.id}`;
+
+}
 
       if (server === "vidsrc.cc") {
         embedURL = `https://vidsrc.cc/v2/embed/${type}/${currentItem.id}`;
@@ -255,6 +264,7 @@ function scrollRow(id, direction){
 }
 
 init();
+
 
 
 
