@@ -145,8 +145,8 @@ loading="lazy">
 
 <div class="server-buttons">
 
-<button onclick="changeServer('vidsrc.cc')">Vidsrc</button>
-
+<button onclick="changeServer('vidsrc.me')">Vidsrc</button>
+  
 <button onclick="changeServer('2embed.cc')">2Embed</button>
 
 <button onclick="changeServer('multiembed.mov')">MultiEmbed</button>
@@ -175,15 +175,15 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 const type = params.get("type");
 
-let currentServer = "vidsrc.cc";
+let currentServer = "vidsrc.me";
 
 
 function loadPlayer(){
 
 let url="";
 
-if(currentServer === "vidsrc.cc"){
-url = `https://vidsrc.cc/v2/embed/${type}/${id}`;
+if(currentServer === "vidsrc.me"){
+url = `https://vidsrc.me/embed/${type}/${id}`;
 }
 
 else if(currentServer === "2embed.cc"){
@@ -267,6 +267,7 @@ loadRecommendations();
 
 </body>
 </html>
+
 
 
 
