@@ -11,6 +11,10 @@
 
 <style>
 
+<style>
+
+/* your normal CSS */
+
 .watch-container{
 display:flex;
 gap:20px;
@@ -39,94 +43,28 @@ height:100%;
 border:none;
 }
 
-.movie-info{
-flex:1;
-min-width:250px;
-}
+/* other desktop styles here */
 
-.movie-info img{
-width:150px;
-border-radius:8px;
-margin-bottom:10px;
-box-shadow:0 0 15px rgba(0,0,0,0.7);
-}
 
-.server-buttons button{
-margin:5px;
-padding:8px 12px;
-border:none;
-background:#222;
-color:white;
-cursor:pointer;
-border-radius:6px;
-}
-
-.server-buttons button:hover{
-background:#00ffff;
-color:black;
-}
-
-.recommendations{
-padding:20px;
-}
-
-.recommendations h2{
-margin-bottom:10px;
-}
-
-.recommend-list{
-display:flex;
-overflow-x:auto;
-gap:12px;
-}
-
-.recommend-card{
-width:140px;
-cursor:pointer;
-}
-
-.recommend-card img{
-width:100%;
-border-radius:6px;
-}
-
-.watch-bg{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background-size:cover;
-background-position:center;
-filter:blur(20px) brightness(0.3);
-z-index:-1;
-}
-
-.watch-container{
-position:relative;
-z-index:2;
-}
-
-.navbar{
-position:relative;
-z-index:2;
-}
-
-  /* MOBILE DESIGN */
-@media (max-width: 768px){
+/* MOBILE WATCH PAGE */
+@media (max-width:768px){
 
 .watch-container{
 flex-direction:column;
 padding:10px;
+gap:15px;
 }
 
+/* Big mobile player */
 .player{
 width:100%;
-height:220px;
+min-width:0;
 }
 
+/* Movie info below player */
 .movie-info{
 text-align:center;
+padding:10px;
 }
 
 .movie-info img{
@@ -135,23 +73,27 @@ margin:auto;
 display:block;
 }
 
+/* Server buttons better for tapping */
 .server-buttons{
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
+gap:8px;
 }
 
 .server-buttons button{
+padding:10px 14px;
 font-size:14px;
-padding:6px 10px;
 }
 
+/* Recommended scroll */
 .recommendations{
 padding:10px;
 }
 
 .recommend-card{
 width:110px;
+flex-shrink:0;
 }
 
 .recommend-list{
@@ -159,6 +101,8 @@ gap:10px;
 }
 
 }
+
+</style>
   
 </style>
   
@@ -317,6 +261,7 @@ loadRecommendations();
 
 </body>
 </html>
+
 
 
 
