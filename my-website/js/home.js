@@ -129,7 +129,7 @@ document.getElementById("modal-video").src = url;
   document.getElementById('modal').style.display = 'none';
   document.getElementById('modal-video').src = '';
 
-  init(); // restart banner trailer
+  init(); // reload banner
 }
 function openSearchModal() {
 
@@ -210,15 +210,7 @@ return trailer ? trailer.key : null;
 
 }
 
-document.addEventListener("click", function(e){
 
-  const banner = document.getElementById("banner");
-
-  if(banner && !banner.contains(e.target)){
-    stopBannerTrailer();
-  }
-
-});
 
 document.getElementById("search-modal").addEventListener("click", function(e){
   if(e.target.id === "search-modal"){
@@ -241,6 +233,7 @@ function scrollRow(id, direction){
 }
 
 init();
+
 
 
 
