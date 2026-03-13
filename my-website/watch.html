@@ -153,28 +153,28 @@ transform:scale(1.1);
   
 /* MOBILE DESIGN */
 
-/* MOBILE DESIGN */
-
-/* MOBILE DESIGN */
-
 @media (max-width:900px){
 
+/* container layout */
 .watch-container{
 grid-template-columns:1fr;
-padding:10px;
+padding:0;
+gap:15px;
 }
 
+/* FULL WIDTH PLAYER */
 .player{
-width:100%;
+width:100vw;
 aspect-ratio:16/9;
+margin-left:calc(-50vw + 50%);
 border-radius:0;
 box-shadow:none;
-margin:0;
 }
 
+/* movie info */
 .movie-info{
 text-align:center;
-padding:10px;
+padding:12px;
 }
 
 .movie-info img{
@@ -183,6 +183,7 @@ margin:auto;
 display:block;
 }
 
+/* server buttons */
 .server-buttons{
 display:flex;
 justify-content:center;
@@ -195,6 +196,7 @@ padding:10px 14px;
 font-size:14px;
 }
 
+/* recommendations */
 .recommendations{
 padding:10px;
 }
@@ -209,7 +211,6 @@ gap:10px;
 }
 
 }
-
 </style>
   
 
@@ -369,6 +370,7 @@ loadRecommendations();
 
 </body>
 </html>
+
 
 
 
