@@ -14,6 +14,7 @@
 <style>
 
 /* BACKGROUND BLUR */
+
 .watch-bg{
 position:fixed;
 top:0;
@@ -26,7 +27,16 @@ filter:blur(20px) brightness(0.3);
 z-index:-1;
 }
 
+/* NAVBAR */
+
+.navbar{
+position:relative;
+z-index:2;
+padding:10px 20px;
+}
+
 /* WATCH CONTAINER */
+
 .watch-container{
 display:flex;
 gap:20px;
@@ -36,7 +46,8 @@ position:relative;
 z-index:2;
 }
 
-/* VIDEO PLAYER */
+/* PLAYER */
+
 .player{
 flex:2;
 min-width:300px;
@@ -59,6 +70,7 @@ border:none;
 }
 
 /* MOVIE INFO */
+
 .movie-info{
 flex:1;
 min-width:250px;
@@ -72,6 +84,7 @@ box-shadow:0 0 15px rgba(0,0,0,0.7);
 }
 
 /* SERVER BUTTONS */
+
 .server-buttons button{
 margin:5px;
 padding:8px 12px;
@@ -88,13 +101,10 @@ color:black;
 }
 
 /* RECOMMENDATIONS */
+
 .recommendations{
 padding:20px;
 width:100%;
-}
-
-.recommendations h2{
-margin-bottom:10px;
 }
 
 .recommend-list{
@@ -114,6 +124,7 @@ border-radius:6px;
 }
 
 /* MOBILE DESIGN */
+
 @media (max-width:768px){
 
 .watch-container{
@@ -125,6 +136,8 @@ gap:15px;
 .player{
 width:100%;
 min-width:0;
+border-radius:0;
+box-shadow:none;
 }
 
 .movie-info{
@@ -324,6 +337,7 @@ loadRecommendations();
 
 </body>
 </html>
+
 
 
 
