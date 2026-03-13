@@ -62,10 +62,6 @@ function watchNow() {
   }
 }
 
-function unmuteTrailer(){
-  const iframe = document.getElementById("banner-trailer");
-  iframe.src = iframe.src.replace("mute=1","mute=0");
-}
 
     function displayList(items, containerId) {
   const container = document.getElementById(containerId);
@@ -107,7 +103,7 @@ function unmuteTrailer(){
 
     function showDetails(item) {
 
-  stopBannerTrailer(); // stop banner trailer
+  
 
   currentItem = item;
       document.getElementById('modal-title').textContent = item.title || item.name;
@@ -137,7 +133,7 @@ document.getElementById("modal-video").src = url;
 }
 function openSearchModal() {
 
-  stopBannerTrailer();
+
 
   document.getElementById('search-modal').style.display = 'flex';
   document.getElementById('search-input').focus();
@@ -245,6 +241,7 @@ function scrollRow(id, direction){
 }
 
 init();
+
 
 
 
