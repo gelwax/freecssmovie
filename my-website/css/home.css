@@ -364,6 +364,8 @@ align-items:flex-end;
 padding:60px;
 color:white;
 position:relative;
+
+animation: bannerZoom 20s ease-in-out infinite alternate;
 }
 
 
@@ -521,5 +523,8 @@ background:rgba(0,0,0,0.35);
   background:#333;
 }
 
-
+@keyframes bannerZoom{
+0%{background-size:100%;}
+100%{background-size:110%;}
+}
 
