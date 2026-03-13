@@ -13,15 +13,30 @@
 
 <style>
 
-/* DESKTOP DESIGN (default) */
+/* BACKGROUND BLUR */
+.watch-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+filter:blur(20px) brightness(0.3);
+z-index:-1;
+}
 
+/* WATCH CONTAINER */
 .watch-container{
 display:flex;
 gap:20px;
 padding:20px;
 flex-wrap:wrap;
+position:relative;
+z-index:2;
 }
 
+/* VIDEO PLAYER */
 .player{
 flex:2;
 min-width:300px;
@@ -43,6 +58,60 @@ height:100%;
 border:none;
 }
 
+/* MOVIE INFO */
+.movie-info{
+flex:1;
+min-width:250px;
+}
+
+.movie-info img{
+width:150px;
+border-radius:8px;
+margin-bottom:10px;
+box-shadow:0 0 15px rgba(0,0,0,0.7);
+}
+
+/* SERVER BUTTONS */
+.server-buttons button{
+margin:5px;
+padding:8px 12px;
+border:none;
+background:#222;
+color:white;
+cursor:pointer;
+border-radius:6px;
+}
+
+.server-buttons button:hover{
+background:#00ffff;
+color:black;
+}
+
+/* RECOMMENDATIONS */
+.recommendations{
+padding:20px;
+width:100%;
+}
+
+.recommendations h2{
+margin-bottom:10px;
+}
+
+.recommend-list{
+display:flex;
+overflow-x:auto;
+gap:12px;
+}
+
+.recommend-card{
+width:140px;
+cursor:pointer;
+}
+
+.recommend-card img{
+width:100%;
+border-radius:6px;
+}
 
 /* MOBILE DESIGN */
 @media (max-width:768px){
@@ -255,6 +324,7 @@ loadRecommendations();
 
 </body>
 </html>
+
 
 
 
