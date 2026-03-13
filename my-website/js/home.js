@@ -190,25 +190,7 @@ setInterval(()=>{
 },8000);
 
 }
-function stopBannerTrailer(){
-  const iframe = document.getElementById("banner-trailer");
-  if(iframe){
-    iframe.src = "";
-  }
-}
 
-    async function fetchTrailer(type,id){
-
-const res = await fetch(`${BASE_URL}/${type}/${id}/videos?api_key=${API_KEY}`);
-const data = await res.json();
-
-const trailer = data.results.find(
-v => v.type === "Trailer" && v.site === "YouTube"
-);
-
-return trailer ? trailer.key : null;
-
-}
 
 
 
@@ -233,6 +215,7 @@ function scrollRow(id, direction){
 }
 
 init();
+
 
 
 
