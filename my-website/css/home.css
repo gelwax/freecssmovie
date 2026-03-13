@@ -366,15 +366,7 @@ color:white;
 position:relative;
 }
 
-.banner-video iframe{
-position:absolute;
-top:50%;
-left:50%;
-width:120%;
-height:120%;
-transform:translate(-50%,-50%);
-pointer-events:none;
-}
+
 
 .banner-content{
 position:relative;
@@ -426,9 +418,7 @@ height:100%;
 background:rgba(0,0,0,0.35);
 }
 
-.banner-video iframe{
-z-index:1;
-}
+
 
 .search-modal{
   position:fixed;
@@ -530,5 +520,6 @@ z-index:1;
 .scroll-btn:hover{
   background:#333;
 }
+
 
 
