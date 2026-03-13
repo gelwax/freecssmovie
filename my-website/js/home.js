@@ -56,12 +56,15 @@ const type = item.title ? "movie" : "tv";
 
 }
 
-function watchNow() {
-  if (bannerItem) {
-    showDetails(bannerItem);
-  }
-}
+function watchNow(){
 
+  if(!bannerItem) return;
+
+  const type = bannerItem.title ? "movie" : "tv";
+
+  window.location.href = `watch.html?id=${bannerItem.id}&type=${type}`;
+
+}
 
     function displayList(items, containerId) {
   const container = document.getElementById(containerId);
@@ -215,6 +218,7 @@ function scrollRow(id, direction){
 }
 
 init();
+
 
 
 
