@@ -151,27 +151,28 @@ transition:0.3s;
 transform:scale(1.1);
 }
   
-/* MOBILE DESIGN */
 @media (max-width:900px){
 
 .watch-container{
 grid-template-columns:1fr;
-padding:10px;
+padding:0;
+margin:0;
 gap:15px;
 }
 
-/* video player fits screen width */
+/* full width player */
 .player{
 width:100%;
 aspect-ratio:16/9;
 border-radius:0;
 box-shadow:none;
+margin:0;
 }
 
 /* movie info */
 .movie-info{
 text-align:center;
-padding:10px;
+padding:12px;
 }
 
 .movie-info img{
@@ -367,6 +368,7 @@ loadRecommendations();
 
 </body>
 </html>
+
 
 
 
