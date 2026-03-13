@@ -152,21 +152,18 @@ transform:scale(1.1);
 }
   
 /* MOBILE DESIGN */
-
 @media (max-width:900px){
 
-/* container layout */
 .watch-container{
 grid-template-columns:1fr;
-padding:0;
+padding:10px;
 gap:15px;
 }
 
-/* FULL WIDTH PLAYER */
+/* video player fits screen width */
 .player{
-width:100vw;
+width:100%;
 aspect-ratio:16/9;
-margin-left:calc(-50vw + 50%);
 border-radius:0;
 box-shadow:none;
 }
@@ -174,7 +171,7 @@ box-shadow:none;
 /* movie info */
 .movie-info{
 text-align:center;
-padding:12px;
+padding:10px;
 }
 
 .movie-info img{
@@ -370,6 +367,7 @@ loadRecommendations();
 
 </body>
 </html>
+
 
 
 
