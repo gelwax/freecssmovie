@@ -173,8 +173,22 @@ function openSearchModal() {
         container.appendChild(img);
       });
     }
+async function loadGenre(id){
 
-    async function init() {
+  const res = await fetch(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${id}`);
+
+  const data = await res.json();
+
+  displayList(data.results,'movies-list');
+
+  window.scrollTo({
+    top:document.getElementById("movies-list").offsetTop-100,
+    behavior:"smooth"
+  });
+
+}
+
+async function init() {
 
 const movies = await fetchTrending('movie');
 const tvShows = await fetchTrending('tv');
@@ -187,12 +201,13 @@ displayList(tvShows, 'tvshows-list');
 displayList(anime, 'anime-list');
 displayList(popular, 'popular-list');
 
-/* AUTO ROTATING BANNER */
 setInterval(()=>{
   displayBanner(movies[Math.floor(Math.random()*movies.length)]);
 },8000);
 
 }
+
+
 
 
 
