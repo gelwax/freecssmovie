@@ -149,7 +149,22 @@ function openSearchModal() {
     document.body.style.overflow = "auto";
 }
 
-    async function searchTMDB(){
+   // SEARCH DELAY SYSTEM
+let searchTimeout;
+
+function debounceSearch(){
+
+clearTimeout(searchTimeout);
+
+searchTimeout = setTimeout(()=>{
+searchTMDB();
+},400);
+
+}
+
+
+// SEARCH FUNCTION
+async function searchTMDB(){
 
 const query = document.getElementById("search-input").value;
 
@@ -179,11 +194,8 @@ card.innerHTML = `
 `;
 
 card.onclick = ()=>{
-
-const type = item.title ? "movie" : "tv";
-
+const type = item.title ? "movie":"tv";
 window.location.href = `watch.html?id=${item.id}&type=${type}`;
-
 };
 
 container.appendChild(card);
