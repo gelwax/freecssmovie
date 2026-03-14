@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,6 +32,34 @@ border-radius:8px;
 transform:scale(1.08);
 }
 
+.pagination{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+padding:30px;
+flex-wrap:wrap;
+}
+
+.pagination button{
+background:#2c3e50;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.pagination button:hover{
+background:#1abc9c;
+}
+
+.pagination button.active{
+background:white;
+color:black;
+}
+
 </style>
 
 </head>
@@ -57,21 +85,21 @@ transform:scale(1.08);
 
 <div class="genre-grid" id="genre-grid"></div>
 
+<div class="pagination" id="pagination"></div>
+
 
 <script>
 
-const API_KEY = "bb6302aa8a6d38895b024e4649cc2c07";
-const BASE_URL = "https://api.themoviedb.org/3";
-const IMG_URL = "https://image.tmdb.org/t/p/w500";
+const API_KEY="bb6302aa8a6d38895b024e4649cc2c07";
+const BASE_URL="https://api.themoviedb.org/3";
+const IMG_URL="https://image.tmdb.org/t/p/w500";
 
-let page = 1;
-let loading = false;
+let currentPage=1;
 
-const params = new URLSearchParams(window.location.search);
-const genre = params.get("genre");
+const params=new URLSearchParams(window.location.search);
+const genre=params.get("genre");
 
-
-const genreNames = {
+const genreNames={
 28:"Action Movies",
 35:"Comedy Movies",
 27:"Horror Movies",
@@ -80,37 +108,35 @@ const genreNames = {
 16:"Anime"
 };
 
-document.getElementById("genre-title").textContent =
+document.getElementById("genre-title").textContent=
 genreNames[genre] || "Movies";
 
+async function loadMovies(page){
 
-async function loadMovies(){
-
-if(loading) return;
-
-loading = true;
+currentPage=page;
 
 let url;
 
-if(genre == 16){
-url = `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=16&with_original_language=ja&page=${page}`;
+if(genre==16){
+url=`${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=16&with_original_language=ja&page=${page}`;
 }else{
-url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}&page=${page}`;
+url=`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}&page=${page}`;
 }
 
-const res = await fetch(url);
-const data = await res.json();
+const res=await fetch(url);
+const data=await res.json();
 
-const grid = document.getElementById("genre-grid");
+const grid=document.getElementById("genre-grid");
+grid.innerHTML="";
 
 data.results.forEach(item=>{
 
 if(!item.poster_path) return;
 
-const card = document.createElement("div");
-card.className = "movie-card";
+const card=document.createElement("div");
+card.className="movie-card";
 
-card.innerHTML = `
+card.innerHTML=`
 <img src="${IMG_URL}${item.poster_path}">
 <div class="movie-info">
 <h4>${item.title || item.name}</h4>
@@ -118,35 +144,48 @@ card.innerHTML = `
 </div>
 `;
 
-card.onclick = ()=>{
-const type = item.title ? "movie" : "tv";
-window.location.href = `watch.html?id=${item.id}&type=${type}`;
+card.onclick=()=>{
+const type=item.title ? "movie":"tv";
+window.location.href=`watch.html?id=${item.id}&type=${type}`;
 };
 
 grid.appendChild(card);
 
 });
 
-page++;
-loading=false;
+createPagination(data.total_pages);
 
 }
 
+function createPagination(totalPages){
 
-/* LOAD MORE WHEN SCROLLING DOWN */
+const pagination=document.getElementById("pagination");
+pagination.innerHTML="";
 
-window.addEventListener("scroll",()=>{
+const maxPages=Math.min(totalPages,1000);
 
-if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 600){
-loadMovies();
+for(let i=currentPage-2;i<=currentPage+2;i++){
+
+if(i<1 || i>maxPages) continue;
+
+const btn=document.createElement("button");
+
+btn.textContent=i;
+
+if(i===currentPage) btn.classList.add("active");
+
+btn.onclick=()=>loadMovies(i);
+
+pagination.appendChild(btn);
+
 }
 
-});
+}
 
-
-loadMovies();
+loadMovies(1);
 
 </script>
 
 </body>
 </html>
+```
