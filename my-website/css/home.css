@@ -567,3 +567,12 @@ background:rgba(0,0,0,0.35);
 .genre-dropdown:hover .genre-menu{
   display:block;
 }
+
+.search-modal .results{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+gap:15px;
+max-width:900px;
+width:100%;
+padding:20px;
+}
