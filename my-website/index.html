@@ -20,11 +20,23 @@
     </a>
   </div>
 
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <input type="text" class="search-bar" placeholder="Search..." onfocus="openSearchModal()" />
+<div class="nav-links">
+  <a href="index.html">Home</a>
+
+  <div class="genre-dropdown">
+    <span>Genres ▾</span>
+    <div class="genre-menu">
+      <a href="#" onclick="loadGenre(28)">Action</a>
+      <a href="#" onclick="loadGenre(35)">Comedy</a>
+      <a href="#" onclick="loadGenre(27)">Horror</a>
+      <a href="#" onclick="loadGenre(878)">Sci-Fi</a>
+      <a href="#" onclick="loadGenre(10749)">Romance</a>
+      <a href="#" onclick="loadGenre(16)">Animation</a>
+    </div>
   </div>
 
+  <input type="text" class="search-bar" placeholder="Search..." onfocus="openSearchModal()" />
+</div>
 </div>
 
 <div class="banner" id="banner">
