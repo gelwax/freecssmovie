@@ -576,3 +576,30 @@ max-width:900px;
 width:100%;
 padding:20px;
 }
+
+.search-item{
+display:flex;
+align-items:center;
+gap:10px;
+background:#1e293b;
+padding:8px;
+border-radius:8px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.search-item:hover{
+background:#334155;
+}
+
+.search-item img{
+width:45px;
+height:65px;
+object-fit:cover;
+border-radius:5px;
+}
+
+.search-item span{
+font-size:14px;
+color:white;
+}
