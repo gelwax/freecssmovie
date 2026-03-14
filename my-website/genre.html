@@ -1,59 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Genre Movies</title>
+
 <link rel="stylesheet" href="css/home.css">
+
+<style>
+
+.genre-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.movie-card{
+cursor:pointer;
+transition:0.3s;
+}
+
+.movie-card img{
+width:100%;
+border-radius:8px;
+}
+
+.movie-card:hover{
+transform:scale(1.08);
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h1 id="genre-title" style="margin:20px;">Movies</h1>
+<div class="navbar">
+  <div class="logo-area">
+    <a href="index.html">
+      <img src="logo.jpg" class="logo">
+    </a>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+  </div>
+</div>
 
 <div class="row">
-  <div class="list" id="genre-list"></div>
+<h2 id="genre-title" style="margin:20px;">Movies</h2>
 </div>
+
+<div class="genre-grid" id="genre-grid"></div>
+
 
 <script>
 
 const API_KEY = "bb6302aa8a6d38895b024e4649cc2c07";
+const BASE_URL = "https://api.themoviedb.org/3";
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
+
+let page = 1;
+let loading = false;
 
 const params = new URLSearchParams(window.location.search);
 const genre = params.get("genre");
 
-async function loadGenre(){
+/* GENRE NAMES */
 
-const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genre}`);
+const genreNames = {
+28:"Action Movies",
+35:"Comedy Movies",
+27:"Horror Movies",
+878:"Sci-Fi Movies",
+10749:"Romance Movies",
+16:"Anime"
+};
 
+document.getElementById("genre-title").textContent =
+genreNames[genre] || "Movies";
+
+
+async function loadMovies(){
+
+if(loading) return;
+loading = true;
+
+let url;
+
+if(genre == 16){
+
+url = `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=16&with_original_language=ja&page=${page}`;
+
+}else{
+
+url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}&page=${page}`;
+
+}
+
+const res = await fetch(url);
 const data = await res.json();
 
-const container = document.getElementById("genre-list");
+const grid = document.getElementById("genre-grid");
 
-data.results.forEach(movie=>{
+data.results.forEach(item=>{
+
+if(!item.poster_path) return;
 
 const card = document.createElement("div");
-card.className="movie-card";
+card.className = "movie-card";
 
 card.innerHTML = `
-<img src="${IMG_URL}${movie.poster_path}">
+<img src="${IMG_URL}${item.poster_path}">
 <div class="movie-info">
-<h4>${movie.title}</h4>
-<span>⭐ ${movie.vote_average}</span>
+<h4>${item.title || item.name}</h4>
+<span>⭐ ${item.vote_average.toFixed(1)}</span>
 </div>
 `;
 
 card.onclick = ()=>{
-window.location.href = `watch.html?id=${movie.id}&type=movie`;
+const type = item.title ? "movie" : "tv";
+window.location.href = `watch.html?id=${item.id}&type=${type}`;
 };
 
-container.appendChild(card);
+grid.appendChild(card);
 
 });
 
+page++;
+loading = false;
+
 }
 
-loadGenre();
+
+/* INFINITE SCROLL */
+
+window.addEventListener("scroll",()=>{
+
+if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 500){
+
+loadMovies();
+
+}
+
+});
+
+
+loadMovies();
 
 </script>
 
