@@ -537,23 +537,25 @@ background:rgba(0,0,0,0.35);
   color:white;
   font-weight:bold;
   cursor:pointer;
+  padding:8px 10px;
+  display:block;
 }
 
 .genre-menu{
   display:none;
   position:absolute;
-  top:30px;
+  top:100%;
   left:0;
   background:#111;
   min-width:160px;
   border-radius:6px;
-  padding:8px 0;
+  padding:5px 0;
   z-index:999;
 }
 
 .genre-menu a{
   display:block;
-  padding:8px 15px;
+  padding:10px 15px;
   color:white;
   text-decoration:none;
 }
