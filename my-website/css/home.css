@@ -575,15 +575,17 @@ gap:10px;
 max-width:600px;
 width:100%;
 padding:20px;
+max-height:450px;
+overflow-y:auto;
 }
 
 .search-item{
 display:flex;
 align-items:center;
-gap:10px;
+gap:12px;
 background:#1e293b;
-padding:8px;
-border-radius:8px;
+padding:10px;
+border-radius:10px;
 cursor:pointer;
 transition:0.2s;
 }
