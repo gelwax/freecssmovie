@@ -179,7 +179,7 @@ const data = await res.json();
 const container = document.getElementById("search-results");
 container.innerHTML = "";
 
-data.results.slice(0,5).forEach(item=>{
+data.results.slice(0,8).forEach(item=>{
 if(!item.poster_path) return;
 
 const card = document.createElement("div");
