@@ -184,7 +184,7 @@ data.results.forEach(item=>{
 if(!item.poster_path) return;
 
 const card = document.createElement("div");
-card.className = "movie-card";
+card.className = "search-item";
 
 card.innerHTML = `
 <img src="${IMG_URL}${item.poster_path}">
