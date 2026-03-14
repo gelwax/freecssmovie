@@ -188,9 +188,7 @@ card.className = "movie-card";
 
 card.innerHTML = `
 <img src="${IMG_URL}${item.poster_path}">
-<div class="movie-info">
-<h4>${item.title || item.name}</h4>
-</div>
+<span>${item.title || item.name}</span>
 `;
 
 card.onclick = ()=>{
