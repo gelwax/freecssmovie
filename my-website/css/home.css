@@ -530,24 +530,25 @@ background:rgba(0,0,0,0.35);
 
 .genre-dropdown{
   position:relative;
-  cursor:pointer;
+  display:inline-block;
 }
 
 .genre-dropdown span{
   color:white;
   font-weight:bold;
+  cursor:pointer;
 }
 
 .genre-menu{
   display:none;
   position:absolute;
-  background:#111;
   top:30px;
   left:0;
-  min-width:150px;
+  background:#111;
+  min-width:160px;
   border-radius:6px;
-  padding:10px 0;
-  box-shadow:0 5px 15px rgba(0,0,0,0.5);
+  padding:8px 0;
+  z-index:999;
 }
 
 .genre-menu a{
