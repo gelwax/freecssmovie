@@ -149,30 +149,48 @@ function openSearchModal() {
     document.body.style.overflow = "auto";
 }
 
-    async function searchTMDB() {
-      const query = document.getElementById('search-input').value;
-      if (!query.trim()) {
-        document.getElementById('search-results').innerHTML = '';
-        return;
-      }
+    async function searchTMDB(){
 
-      const res = await fetch(`${BASE_URL}/search/multi?api_key=${API_KEY}&query=${query}`);
-      const data = await res.json();
+const query = document.getElementById("search-input").value;
 
-      const container = document.getElementById('search-results');
-      container.innerHTML = '';
-      data.results.forEach(item => {
-        if (!item.poster_path) return;
-        const img = document.createElement('img');
-        img.src = `${IMG_URL}${item.poster_path}`;
-        img.alt = item.title || item.name;
-        img.onclick = () => {
-          closeSearchModal();
-          showDetails(item);
-        };
-        container.appendChild(img);
-      });
-    }
+if(!query.trim()){
+document.getElementById("search-results").innerHTML="";
+return;
+}
+
+const res = await fetch(`${BASE_URL}/search/multi?api_key=${API_KEY}&query=${query}`);
+const data = await res.json();
+
+const container = document.getElementById("search-results");
+container.innerHTML = "";
+
+data.results.forEach(item=>{
+
+if(!item.poster_path) return;
+
+const card = document.createElement("div");
+card.className = "movie-card";
+
+card.innerHTML = `
+<img src="${IMG_URL}${item.poster_path}">
+<div class="movie-info">
+<h4>${item.title || item.name}</h4>
+</div>
+`;
+
+card.onclick = ()=>{
+
+const type = item.title ? "movie" : "tv";
+
+window.location.href = `watch.html?id=${item.id}&type=${type}`;
+
+};
+
+container.appendChild(card);
+
+});
+
+}
 async function loadGenre(id){
 
   const res = await fetch(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${id}`);
