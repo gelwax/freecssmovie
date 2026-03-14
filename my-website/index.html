@@ -35,7 +35,12 @@
 </div>
   </div>
 
-  <input type="text" class="search-bar" placeholder="Search..." onfocus="openSearchModal()" />
+  <input type="text"
+class="search-bar"
+id="search-input"
+placeholder="Search..."
+onfocus="openSearchModal()"
+oninput="debounceSearch()" />
 </div>
 </div>
 
