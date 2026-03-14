@@ -1,108 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Genre Movies</title>
 
 <link rel="stylesheet" href="css/home.css">
-
-<style>
-
-.genre-grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-gap:20px;
-padding:20px;
-}
-
-.movie-card{
-cursor:pointer;
-transition:0.3s;
-}
-
-.movie-card img{
-width:100%;
-border-radius:8px;
-}
-
-.movie-card:hover{
-transform:scale(1.08);
-}
-
-</style>
 
 </head>
 
 <body>
 
 <div class="navbar">
-  <div class="logo-area">
-    <a href="index.html">
-      <img src="logo.jpg" class="logo">
-    </a>
-  </div>
 
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-  </div>
+<div class="logo-area">
+<a href="index.html">
+<img src="logo.jpg" class="logo">
+</a>
 </div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+</div>
+
+</div>
+
 
 <div class="row">
-<h2 id="genre-title" style="margin:20px;">Movies</h2>
+
+<h2 id="genre-title">Movies</h2>
+
+<div class="scroll-wrapper">
+
+<button class="scroll-btn left" onclick="scrollRow('genre-list',-1)">❮</button>
+
+<div class="list" id="genre-list"></div>
+
+<button class="scroll-btn right" onclick="scrollRow('genre-list',1)">❯</button>
+
 </div>
 
-<div class="genre-grid" id="genre-grid"></div>
+</div>
 
 
 <script>
 
 const API_KEY = "bb6302aa8a6d38895b024e4649cc2c07";
 const BASE_URL = "https://api.themoviedb.org/3";
-const IMG_URL = "https://image.tmdb.org/t/p/w500";
-
-let page = 1;
-let loading = false;
+const IMG_URL = "https://image.tmdb.org/t/p/original";
 
 const params = new URLSearchParams(window.location.search);
 const genre = params.get("genre");
 
-/* GENRE NAMES */
 
 const genreNames = {
+
 28:"Action Movies",
 35:"Comedy Movies",
 27:"Horror Movies",
 878:"Sci-Fi Movies",
 10749:"Romance Movies",
 16:"Anime"
+
 };
 
 document.getElementById("genre-title").textContent =
 genreNames[genre] || "Movies";
 
 
-async function loadMovies(){
-
-if(loading) return;
-loading = true;
+async function loadGenre(){
 
 let url;
 
 if(genre == 16){
 
-url = `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=16&with_original_language=ja&page=${page}`;
+url = `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=16&with_original_language=ja`;
 
 }else{
 
-url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}&page=${page}`;
+url = `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}`;
 
 }
 
 const res = await fetch(url);
 const data = await res.json();
 
-const grid = document.getElementById("genre-grid");
+const container = document.getElementById("genre-list");
 
 data.results.forEach(item=>{
 
@@ -124,30 +109,28 @@ const type = item.title ? "movie" : "tv";
 window.location.href = `watch.html?id=${item.id}&type=${type}`;
 };
 
-grid.appendChild(card);
+container.appendChild(card);
 
 });
-
-page++;
-loading = false;
 
 }
 
 
-/* INFINITE SCROLL */
+function scrollRow(id,direction){
 
-window.addEventListener("scroll",()=>{
+const container = document.getElementById(id);
 
-if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 500){
+const scrollAmount = 500;
 
-loadMovies();
+container.scrollBy({
+left:scrollAmount*direction,
+behavior:"smooth"
+});
 
 }
 
-});
 
-
-loadMovies();
+loadGenre();
 
 </script>
 
