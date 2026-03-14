@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Genre Movies</title>
+<link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+<h1 id="genre-title" style="margin:20px;">Movies</h1>
+
+<div class="row">
+  <div class="list" id="genre-list"></div>
+</div>
+
+<script>
+
+const API_KEY = "bb6302aa8a6d38895b024e4649cc2c07";
+const IMG_URL = "https://image.tmdb.org/t/p/w500";
+
+const params = new URLSearchParams(window.location.search);
+const genre = params.get("genre");
+
+async function loadGenre(){
+
+const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genre}`);
+
+const data = await res.json();
+
+const container = document.getElementById("genre-list");
+
+data.results.forEach(movie=>{
+
+const card = document.createElement("div");
+card.className="movie-card";
+
+card.innerHTML = `
+<img src="${IMG_URL}${movie.poster_path}">
+<div class="movie-info">
+<h4>${movie.title}</h4>
+<span>⭐ ${movie.vote_average}</span>
+</div>
+`;
+
+card.onclick = ()=>{
+window.location.href = `watch.html?id=${movie.id}&type=movie`;
+};
+
+container.appendChild(card);
+
+});
+
+}
+
+loadGenre();
+
+</script>
+
+</body>
+</html>
