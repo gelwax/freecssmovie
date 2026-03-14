@@ -139,13 +139,13 @@ function openSearchModal() {
 
 
   document.getElementById('search-modal').style.display = 'flex';
-  document.getElementById('search-input').focus();
+  document.getElementById('search-modal-input').focus();
     document.body.style.overflow = "hidden";
 }
     function closeSearchModal() {
   document.getElementById('search-modal').style.display = 'none';
   document.getElementById('search-results').innerHTML = '';
-  document.getElementById('search-input').value = '';
+  document.getElementById('search-modal-input').value = '';
     document.body.style.overflow = "auto";
 }
 
@@ -166,7 +166,7 @@ searchTMDB();
 // SEARCH FUNCTION
 async function searchTMDB(){
 
-const query = document.getElementById("search-input").value;
+const query = document.getElementById("search-modal-input").value;
 
 if(!query.trim()){
 document.getElementById("search-results").innerHTML="";
